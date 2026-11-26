@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Stage } from "../three/Stage";
-import { Sleeve, SLIDE } from "../three/Sleeve";
+import { Sleeve, type Pull } from "../three/Sleeve";
 import { SectionHeader } from "../components/SectionHeader";
 import { IconButton } from "../components/IconButton";
 import { SearchIcon, ShuffleIcon } from "../components/Icons";
 import { useScrollStep } from "../hooks/useScrollStep";
 import { actions, useStore } from "../state/store";
-import type { Disc } from "../data/discs";
+import type { Disc } from "../music/types";
 
 const CAMERA: [number, number, number] = [0, 0.03, 0.9];
 const TARGET: [number, number, number] = [0, 0.03, 0];
@@ -51,12 +51,12 @@ function CrateRow({ discs, focus, pulled, onPick }: RowProps) {
   return (
     <>
       {discs.map((disc, i) => {
-        const slide = pulled === i ? SLIDE.out : hover === i || (i === focus && pulled === null) ? SLIDE.peek : SLIDE.rest;
+        const pull: Pull = pulled === i ? "out" : hover === i || (i === focus && pulled === null) ? "peek" : "rest";
         return (
           <group key={disc.id} ref={attach(i)}>
             <Sleeve
               disc={disc}
-              slide={slide}
+              pull={pull}
               onClick={(e) => {
                 e.stopPropagation();
                 onPick(i);
@@ -99,8 +99,22 @@ export function Crate() {
     }, 650);
   };
 
-  const disc = discs[focus];
+  const disc = discs[Math.min(focus, discs.length - 1)];
   const count = (n: number) => String(n).padStart(2, "0");
+
+  if (!disc) {
+    return (
+      <div ref={pageRef} className="crate">
+        <SectionHeader title="THE_CRATE" />
+        <div className="overlay empty" role="status">
+          <p className="t-display-lg">CRATE IS EMPTY</p>
+          <Link to="/burn" className="t-label-md empty__link">
+            Burn your first disc →
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={pageRef} className="crate">
@@ -111,7 +125,7 @@ export function Crate() {
 
       <div className="overlay crate__caption" aria-live="polite">
         <span className="t-label-sm crate__count">
-          {count(disc.no)} / {count(discs.length)}
+          {count(focus + 1)} / {count(discs.length)}
         </span>
         <span className="t-title-lg">{disc.title}</span>
         <span className="t-body-md crate__artist">{disc.artist}</span>

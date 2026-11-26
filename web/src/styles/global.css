@@ -94,12 +94,6 @@ button {
   color: var(--color-text-primary);
 }
 
-.topbar--hero .nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  gap: 210px;
-}
 
 /* ---------- section header ---------- */
 .section-header {

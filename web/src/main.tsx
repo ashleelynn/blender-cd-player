@@ -13,6 +13,7 @@ import { Hero } from "./pages/Hero";
 import { Crate } from "./pages/Crate";
 import { NowPlaying } from "./pages/NowPlaying";
 import { Burn } from "./pages/Burn";
+import { actions } from "./state/store";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,9 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+// fresh artwork and preview links for the saved crate
+void actions.refresh();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

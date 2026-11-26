@@ -2,12 +2,14 @@ import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import { ContactShadows, useGLTF } from "@react-three/drei";
-import type { Disc } from "../data/discs";
-import { CD } from "./CD";
-import { getCoverTexture } from "./coverTexture";
+import type { Disc } from "../music/types";
+import { CDModel } from "./Sleeve";
 
 const MODEL_URL = "/models/cd_player.glb";
 useGLTF.preload(MODEL_URL);
+
+/** where the disc sits on the spindle (the GLB's Disc node), for lining things up with it */
+export const DISC_SEAT = new THREE.Vector3(0, 0.015, -0.022);
 
 export type PlayerKey = "prev" | "toggle_play" | "next";
 /** node name -> the `action` custom property it carries in the GLB */
@@ -23,7 +25,8 @@ const smooth = (t: number, a: number, b: number) => {
 };
 
 type Props = {
-  disc: Disc;
+  /** the disc on the spindle; none leaves the bay empty */
+  disc?: Disc;
   playing: boolean;
   /** pink keys respond to clicks */
   interactive?: boolean;
@@ -34,8 +37,8 @@ type Props = {
 };
 
 /**
- * The Blender CD player (cd_player.glb). Its own Disc is hidden and a placeholder CD sits on
- * the spindle instead. The play key's icon follows `playing` (glTF has no visibility, so it is set here).
+ * The Blender CD player (cd_player.glb). Its own Disc has no UVs for art, so it is hidden and
+ * the CD from album_sleeve.glb, with the song's cover on the label, sits on the spindle instead. The play key's icon follows `playing` (glTF has no visibility, so it is set here).
  */
 export function PlayerModel({ disc, playing, interactive = true, introFrom = null, onIntroDone, onKey }: Props) {
   const gltf = useGLTF(MODEL_URL);
@@ -142,9 +145,7 @@ export function PlayerModel({ disc, playing, interactive = true, introFrom = nul
   return (
     <group>
       <primitive object={scene} onClick={onClick} onPointerMove={onPointerMove} onPointerOut={onPointerOut} />
-      <group ref={cdRef}>
-        <CD texture={getCoverTexture(disc)} />
-      </group>
+      <group ref={cdRef}>{disc && <CDModel disc={disc} />}</group>
       <ContactShadows position={[0, parts.floor - 0.0004, 0]} scale={0.5} blur={2.6} far={0.06} opacity={0.32} resolution={512} />
     </group>
   );

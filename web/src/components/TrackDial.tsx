@@ -1,8 +1,7 @@
 import { useRef, type KeyboardEvent } from "react";
 import { useScrollStep } from "../hooks/useScrollStep";
 
-type Item = { no: number; title: string };
-type Props = { items: Item[]; value: number; onChange: (index: number) => void };
+type Props = { items: Array<{ title: string }>; value: number; onChange: (index: number) => void };
 
 const ROW = 56;
 const HEIGHT = 168;
@@ -40,7 +39,7 @@ export function TrackDial({ items, value, onChange }: Props) {
           const state = d === 0 ? "is-selected" : d === 1 ? "is-adjacent" : "is-hidden";
           return (
             <div key={i} id={`dial-${i}`} role="option" aria-selected={d === 0} className={`dial__row ${state}`}>
-              <span className="dial__no">{String(item.no).padStart(2, "0")}</span>
+              <span className="dial__no">{String(i + 1).padStart(2, "0")}</span>
               <span className="dial__title">{item.title}</span>
             </div>
           );
