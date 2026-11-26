@@ -1,0 +1,88 @@
+/* ---------- crate ---------- */
+.crate {
+  position: absolute;
+  inset: 0;
+}
+
+.crate__caption {
+  left: 50%;
+  top: calc(56% + 132px);
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.crate__count,
+.crate__artist {
+  color: var(--color-text-secondary);
+}
+
+.crate__shuffle {
+  margin-top: var(--space-16);
+}
+
+.crate__footer {
+  left: var(--space-48);
+  right: var(--space-48);
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.crate__progress {
+  position: relative;
+  width: 320px;
+  height: 1px;
+  background: var(--color-border-subtle);
+}
+
+.crate__progress span {
+  position: absolute;
+  top: -1px;
+  width: 15%;
+  height: 3px;
+  background: var(--color-accent-primary);
+  transition: left 320ms var(--ease-out);
+}
+
+.crate__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  color: var(--color-text-tertiary);
+}
+
+/* ---------- now playing ---------- */
+.now__dial {
+  right: var(--space-48);
+  top: 47.5%;
+  transform: translateY(-50%);
+}
+
+/* ---------- burn ---------- */
+.burn__soon {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.burn__cursor {
+  color: var(--color-accent-primary);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .burn__cursor {
+    animation: none;
+  }
+}

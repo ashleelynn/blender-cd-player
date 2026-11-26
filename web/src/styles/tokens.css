@@ -1,0 +1,74 @@
+/* Design tokens, mirrored from the Figma variables (Primitives, Color, Spacing, Typography). */
+:root {
+  /* primitives */
+  --ink-950: #111111;
+  --ink-700: #3a3a3a;
+  --ink-500: #858582;
+  --ink-300: #bdbdb8;
+  --ink-150: #e2e2de;
+  --paper-50: #f3f3ef;
+  --paper-0: #ffffff;
+  --glass-white-72: #ffffffb8;
+  --pink-500: #ff2d87;
+  --pink-100: #ffe0ee;
+  --green-400: #2bd96b;
+  --lcd-950: #0e0f0e;
+  --lcd-100: #e8ffe6;
+
+  /* color */
+  --color-bg-canvas: var(--paper-50);
+  --color-bg-surface: var(--paper-0);
+  --color-bg-glass: var(--glass-white-72);
+  --color-bg-inverse: var(--ink-950);
+  --color-bg-placeholder: var(--ink-150);
+  --color-text-primary: var(--ink-950);
+  --color-text-secondary: var(--ink-500);
+  --color-text-tertiary: var(--ink-300);
+  --color-text-inverse: var(--paper-0);
+  --color-text-accent: var(--pink-500);
+  --color-border-subtle: var(--ink-150);
+  --color-border-strong: var(--ink-950);
+  --color-border-accent: var(--pink-500);
+  --color-accent-primary: var(--pink-500);
+  --color-accent-soft: var(--pink-100);
+  --color-status-live: var(--green-400);
+  --color-grid-dot: var(--ink-300);
+
+  /* spacing */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+
+  /* radius */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  /* typography */
+  --font-mono: "MD Thermochrome Mono Trial", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-sans: "Instrument Sans", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Text styles, named after the Figma text styles. */
+.t-display-xl { font: 400 64px/64px var(--font-mono); letter-spacing: 0.02em; }
+.t-display-lg { font: 400 36px/40px var(--font-mono); letter-spacing: 0.02em; }
+.t-label-md { font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+.t-label-sm { font: 400 10px/14px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+.t-data-md { font: 400 13px/18px var(--font-mono); letter-spacing: 0.02em; }
+.t-title-lg { font: 500 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.t-title-md { font: 500 16px/22px var(--font-sans); letter-spacing: -0.005em; }
+.t-body-md { font: 400 15px/22px var(--font-sans); }
+.t-body-sm { font: 400 13px/18px var(--font-sans); }

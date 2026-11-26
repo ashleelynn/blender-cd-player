@@ -1,8 +1,23 @@
-# Blender CD Player
+# UNTZ UNTZ
 
-A portable CD player modeled in Blender 5.3: a clear glass body with a visible circuit board, a small CRT screen and hot pink keys.
+A Y2K-cyber CD player for the web. This repo has two parts:
+
+- **The 3D models** (repo root): a portable CD player and an album sleeve, modeled in Blender 5.3.
+- **The web app** (`web/`): Vite, React and three.js. Pick a disc from the crate and watch it fly into the player. See [web/README.md](web/README.md).
 
 ![Hero render](renders/cd_player_hero.png)
+
+## Run the web app
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+## Blender CD player
+
+A portable CD player: a clear glass body with a visible circuit board, a small CRT screen and hot pink keys.
 
 ## Files
 

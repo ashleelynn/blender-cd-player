@@ -1,0 +1,32 @@
+/*
+  MD Thermochrome Mono is a trial font. The .otf files in public/fonts are copied from your
+  machine and are git-ignored: buy a web license before deploying.
+*/
+@font-face {
+  font-family: "MD Thermochrome Mono Trial";
+  src: url("/fonts/MDThermochromeMonoTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MD Thermochrome Mono Trial";
+  src: url("/fonts/MDThermochromeMonoTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MD Thermochrome Mono Trial";
+  src: url("/fonts/MDThermochromeMonoTrial-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MD Thermochrome Mono Trial";
+  src: url("/fonts/MDThermochromeMonoTrial-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
